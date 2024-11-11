@@ -61,7 +61,7 @@ const handleCreateNote = () => {
           v-model="content"
           class="w-full resize-none rounded-xl border border-neutral-900 p-4 text-lg outline-none"
           :style="{ backgroundColor: selectedColor }"
-          :rows="15"
+          :rows="9"
         ></textarea>
       </div>
 

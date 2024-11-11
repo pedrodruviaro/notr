@@ -34,7 +34,14 @@ export const useNotesStore = defineStore('notes', () => {
     const localNotes = localStorage.getItem(STORAGE_KEY)
     if (!localNotes) return
 
-    notes.value = JSON.parse(localNotes)
+    const arr = JSON.parse(localNotes).map((note: Note) => ({
+      ...note,
+      createdAt: new Date(note.createdAt),
+    }))
+
+    arr.sort((a: Note, b: Note) => b.createdAt.getTime() - a.createdAt.getTime())
+
+    notes.value = arr
   }
 
   const remove = (id: string) => {

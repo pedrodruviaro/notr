@@ -4,6 +4,6 @@ import LayoutPage from '@/layouts/Page.vue'
 
 <template>
   <LayoutPage>
-    <h1>Home page</h1>
+    <h1>Create note</h1>
   </LayoutPage>
 </template>

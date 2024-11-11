@@ -16,6 +16,10 @@ import LayoutFooter from '@/components/Layout/Footer.vue'
 
 <style scoped>
 #main {
-  min-height: calc(100vh - 126px);
+  --header-height: 83px;
+  --footer-height: 69px;
+  --discount-calc: calc(var(--header-height) + var(--footer-height));
+
+  min-height: calc(100vh - var(--discount-calc));
 }
 </style>

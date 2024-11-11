@@ -8,5 +8,10 @@ export const routes = [
     redirect: '/',
     children: [{ path: ':id', component: () => import('@/views/EditNoteView.vue') }],
   },
+  {
+    path: '/notes/',
+    redirect: '/',
+    children: [{ path: ':id', component: () => import('@/views/SingleNoteView.vue') }],
+  },
   { path: '/categories', component: () => import('@/views/CategoriesView.vue') },
 ]

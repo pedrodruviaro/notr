@@ -7,7 +7,7 @@ import Logo from '@/components/Logo.vue'
   <header class="border-b border-neutral-200 py-4">
     <BaseContainer>
       <nav class="flex flex-wrap items-center justify-between gap-2">
-        <RouterLink to="/" class="block max-w-max">
+        <RouterLink id="logo" to="/" class="block max-w-max">
           <Logo />
         </RouterLink>
 
@@ -31,5 +31,9 @@ import Logo from '@/components/Logo.vue'
 <style scoped>
 .router-link-exact-active {
   @apply border-b border-neutral-400;
+}
+
+#logo {
+  border-bottom: none !important;
 }
 </style>

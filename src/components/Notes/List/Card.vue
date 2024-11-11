@@ -14,8 +14,9 @@ const emits = defineEmits<{
 </script>
 
 <template>
-  <article
-    class="overflow-hidden rounded-lg border border-neutral-900 p-4 lg:p-6"
+  <RouterLink
+    :to="`/notes/${props.id}`"
+    class="block overflow-hidden rounded-lg border border-neutral-900 p-4 lg:p-6"
     :style="{ backgroundColor: props.color }"
   >
     <span class="mb-2 inline-block text-sm text-neutral-600">{{
@@ -36,5 +37,5 @@ const emits = defineEmits<{
         <button @click="emits('remove', props.id)" class="text-sm text-neutral-800">Remover</button>
       </div>
     </div>
-  </article>
+  </RouterLink>
 </template>

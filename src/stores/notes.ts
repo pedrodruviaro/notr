@@ -22,6 +22,7 @@ export const useNotesStore = defineStore('notes', () => {
     }
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...notes.value, newNote]))
+    notes.value.unshift(newNote)
   }
 
   const getNotes = () => {

@@ -4,6 +4,7 @@ const props = defineProps<{
   color: string
   content: string
   createdAt: Date
+  category: string | undefined
 }>()
 
 const emits = defineEmits<{
@@ -17,6 +18,8 @@ const emits = defineEmits<{
     class="rounded-lg border border-neutral-900 p-4 lg:p-6"
     :style="{ backgroundColor: props.color }"
   >
+    <p class="text-sm font-bold" v-if="props.category">{{ props.category }}</p>
+
     <span class="mb-2 inline-block text-sm text-neutral-600">{{
       props.createdAt.toLocaleDateString('pt-BR', {
         day: '2-digit',

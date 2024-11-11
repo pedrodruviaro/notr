@@ -1,12 +1,14 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import { ref } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
-import type { Category } from '@/types/entities'
 import { useNotesStore } from './notes'
+import { useToast } from 'vue-toast-notification'
+import type { Category } from '@/types/entities'
 
 const STORAGE_KEY = 'categories-notr'
 
 export const useCategoriesStore = defineStore('categories', () => {
+  const toast = useToast()
   const notesStore = useNotesStore()
 
   const categories = ref<Category[]>([])
@@ -26,11 +28,15 @@ export const useCategoriesStore = defineStore('categories', () => {
 
     categories.value.unshift(newCategory)
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...categories.value]))
+
+    toast.success('Categoria criada!', { duration: 2000, position: 'top-right' })
   }
 
   const remove = (id: string) => {
     const idx = categories.value.findIndex((c) => c.id === id)
     const catToRemove = categories.value[idx].title
+
+    categories.value.splice(idx, 1)
 
     if (categories.value.length === 0) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify([]))
@@ -40,6 +46,8 @@ export const useCategoriesStore = defineStore('categories', () => {
     notesStore.removeCategory(catToRemove)
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...categories.value]))
+
+    toast.info('Categoria removida!', { duration: 2000, position: 'top-right' })
   }
 
   const edit = (id: string, { title }: Pick<Category, 'title'>) => {
@@ -49,6 +57,8 @@ export const useCategoriesStore = defineStore('categories', () => {
     categories.value.splice(idx, 1, { id: localId, title })
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...categories.value]))
+
+    toast.success('Categoria atualizada!', { duration: 2000, position: 'top-right' })
   }
 
   return {

@@ -4,5 +4,21 @@
 
 html,
 body {
-  @apply font-main bg-neutral-50 text-neutral-900;
+  @apply bg-neutral-50 font-main text-neutral-900;
+}
+
+.v-toast__item--success {
+  background-color: rgb(107, 179, 143);
+}
+
+.v-toast__item--info {
+  background-color: rgb(115, 160, 175);
+}
+
+.v-toast__item {
+  min-height: 3.25rem;
+}
+
+.v-toast__item .v-toast__text {
+  padding: 0.25rem 1rem;
 }

@@ -18,6 +18,7 @@
     "uuid": "^11.0.3",
     "vue": "^3.5.12",
     "vue-router": "4",
+    "vue-toast-notification": "^3",
     "zod": "^3.23.8"
   },
   "devDependencies": {

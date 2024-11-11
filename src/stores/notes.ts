@@ -1,11 +1,14 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import { v4 as uuidv4 } from 'uuid'
 import { ref } from 'vue'
+import { useToast } from 'vue-toast-notification'
 import type { Note } from '@/types/entities'
 
 const STORAGE_KEY = 'notes-notr'
 
 export const useNotesStore = defineStore('notes', () => {
+  const toast = useToast()
+
   const notes = ref<Note[]>([])
 
   const create = ({ color, content, category }: Pick<Note, 'color' | 'content' | 'category'>) => {
@@ -23,6 +26,8 @@ export const useNotesStore = defineStore('notes', () => {
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...notes.value, newNote]))
     notes.value.unshift(newNote)
+
+    toast.success('Nota criada!', { duration: 2000, position: 'top-right' })
   }
 
   const getNotes = () => {
@@ -41,6 +46,8 @@ export const useNotesStore = defineStore('notes', () => {
     }
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...notes.value]))
+
+    toast.info('Nota removida!', { duration: 2000, position: 'top-right' })
   }
 
   const editNote = (
@@ -59,6 +66,8 @@ export const useNotesStore = defineStore('notes', () => {
     notes.value.splice(idx, 1, { ...updatedNote, id: currentId })
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...notes.value]))
+
+    toast.success('Nota atualizada!', { duration: 2000, position: 'top-right' })
   }
 
   const getNoteById = (id: string) => {

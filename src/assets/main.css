@@ -4,5 +4,5 @@
 
 html,
 body {
-  @apply bg-neutral-50 text-neutral-900;
+  @apply font-main bg-neutral-50 text-neutral-900;
 }

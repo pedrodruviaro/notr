@@ -7,7 +7,7 @@ import LayoutFooter from '@/components/Layout/Footer.vue'
 <template>
   <div>
     <LayoutHeader />
-    <BaseContainer as="main" class="pt-10 lg:pt-16" id="main">
+    <BaseContainer as="main" class="py-10 lg:py-16" id="main">
       <slot />
     </BaseContainer>
     <LayoutFooter />

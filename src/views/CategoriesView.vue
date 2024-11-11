@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import LayoutPage from '@/layouts/Page.vue'
 import BaseTitle from '@/components/Base/Title.vue'
 import BaseButton from '@/components/Base/Button.vue'
 import BaseConfirmDialog from '@/components/Base/ConfirmDialog.vue'
@@ -59,7 +58,7 @@ const handleConfirmRemove = () => {
 </script>
 
 <template>
-  <LayoutPage>
+  <div>
     <div class="space-y-10">
       <BaseTitle label="Minhas categorias" />
 
@@ -123,5 +122,5 @@ const handleConfirmRemove = () => {
       :label="`Deseja realmente remover a categoria ${categoryToRemove?.title}?`"
       @confirm="handleConfirmRemove"
     />
-  </LayoutPage>
+  </div>
 </template>

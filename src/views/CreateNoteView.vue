@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import LayoutPage from '@/layouts/Page.vue'
 import BaseTitle from '@/components/Base/Title.vue'
 import BaseButton from '@/components/Base/Button.vue'
 import { noteColors } from '@/types/types'
@@ -30,7 +29,7 @@ const handleCreateNote = () => {
 </script>
 
 <template>
-  <LayoutPage>
+  <div>
     <section class="space-y-8">
       <BaseTitle label="Crie sua nota" />
 
@@ -70,5 +69,5 @@ const handleCreateNote = () => {
         <BaseButton label="Pronto!" variant="outline" @click="handleCreateNote" />
       </div>
     </section>
-  </LayoutPage>
+  </div>
 </template>

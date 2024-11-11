@@ -12,8 +12,14 @@ import Logo from '@/components/Logo.vue'
         </RouterLink>
 
         <div class="flex gap-4">
-          <RouterLink class="font-semibold hover:opacity-80 md:text-lg" to="/">Notas</RouterLink>
-          <RouterLink class="font-semibold hover:opacity-80 md:text-lg" to="/categories"
+          <RouterLink
+            class="border-b border-transparent font-semibold hover:opacity-80 md:text-lg"
+            to="/"
+            >Notas</RouterLink
+          >
+          <RouterLink
+            class="border-b border-transparent font-semibold hover:opacity-80 md:text-lg"
+            to="/categories"
             >Categorias</RouterLink
           >
         </div>
@@ -21,3 +27,9 @@ import Logo from '@/components/Logo.vue'
     </BaseContainer>
   </header>
 </template>
+
+<style scoped>
+.router-link-exact-active {
+  @apply border-b border-neutral-400;
+}
+</style>

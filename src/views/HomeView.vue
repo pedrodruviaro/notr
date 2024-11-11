@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import LayoutPage from '@/layouts/Page.vue'
 import BaseTitle from '@/components/Base/Title.vue'
 import BaseButton from '@/components/Base/Button.vue'
 import BaseConfirmDialog from '@/components/Base/ConfirmDialog.vue'
@@ -47,7 +46,7 @@ const filteredNotes = computed(() => {
 </script>
 
 <template>
-  <LayoutPage>
+  <div>
     <section class="mb-10 lg:mb-14">
       <div class="flex flex-wrap items-center justify-between gap-2">
         <BaseTitle label="Minhas notas" />
@@ -93,5 +92,5 @@ const filteredNotes = computed(() => {
       label="Deseja realmente apagar essa nota?"
       @confirm="handleConfirmRemove"
     />
-  </LayoutPage>
+  </div>
 </template>

@@ -6,7 +6,7 @@ import Logo from '@/components/Logo.vue'
 <template>
   <header class="border-b border-neutral-200 py-4">
     <BaseContainer>
-      <RouterLink to="/">
+      <RouterLink to="/" class="block max-w-max">
         <Logo />
       </RouterLink>
     </BaseContainer>

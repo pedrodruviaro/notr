@@ -6,16 +6,13 @@ import BaseSkeleton from '@/components/Base/Skeleton.vue'
 import NotesList from '@/components/Notes/List.vue'
 import NotesCard from '@/components/Notes/Card.vue'
 import NotesEmpty from '@/components/Notes/Empty.vue'
-import { useNotesStore } from '@/stores/notes'
-import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useNotesStore } from '@/stores/notes'
 
 const notesStore = useNotesStore()
-onMounted(() => notesStore.getNotes())
-
 const router = useRouter()
 
-const handleEditNote = (id: string) => router.push('/edit')
+const handleEditNote = (id: string) => router.push(`/edit/${id}`)
 
 const handleRemoveNote = (id: string) => notesStore.remove(id)
 </script>

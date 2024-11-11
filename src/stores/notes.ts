@@ -42,9 +42,26 @@ export const useNotesStore = defineStore('notes', () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...notes.value]))
   }
 
-  const editNote = () => {
-    // atualizar no array
-    // atualiza no LS
+  const editNote = (
+    id: string,
+    { color, content, category }: Pick<Note, 'color' | 'content' | 'category'>,
+  ) => {
+    const updatedNote: Omit<Note, 'id'> = {
+      color,
+      content,
+      category,
+      createdAt: new Date(),
+    }
+
+    const idx = notes.value.findIndex((n) => n.id === id)
+    const currentId = notes.value[idx].id
+    notes.value.splice(idx, 1, { ...updatedNote, id: currentId })
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([...notes.value]))
+  }
+
+  const getNoteById = (id: string) => {
+    return notes.value.find((n) => n.id === id)
   }
 
   return {
@@ -53,6 +70,7 @@ export const useNotesStore = defineStore('notes', () => {
     getNotes,
     remove,
     editNote,
+    getNoteById,
   }
 })
 

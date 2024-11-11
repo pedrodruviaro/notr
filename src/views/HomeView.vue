@@ -71,7 +71,7 @@ const filteredNotes = computed(() => {
     </section>
 
     <section>
-      <NotesList v-if="filteredNotes.length > 0">
+      <NotesList v-auto-animate v-if="filteredNotes.length > 0">
         <NotesCard
           v-for="note in filteredNotes"
           :key="note.id"

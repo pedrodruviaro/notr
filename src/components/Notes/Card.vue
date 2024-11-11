@@ -15,7 +15,7 @@ const emits = defineEmits<{
 
 <template>
   <article
-    class="rounded-lg border border-neutral-900 p-4 lg:p-6"
+    class="overflow-hidden rounded-lg border border-neutral-900 p-4 lg:p-6"
     :style="{ backgroundColor: props.color }"
   >
     <p class="text-sm font-bold" v-if="props.category">{{ props.category }}</p>
@@ -27,7 +27,8 @@ const emits = defineEmits<{
         year: 'numeric',
       })
     }}</span>
-    <p>{{ props.content }}</p>
+
+    <p class="max-w-max truncate">{{ props.content }}</p>
 
     <div class="mt-10 flex justify-end gap-4">
       <button @click="emits('edit', props.id)" class="text-sm text-neutral-800">Editar</button>

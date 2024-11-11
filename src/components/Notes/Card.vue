@@ -5,6 +5,11 @@ const props = defineProps<{
   content: string
   createdAt: Date
 }>()
+
+const emits = defineEmits<{
+  edit: [id: string]
+  remove: [id: string]
+}>()
 </script>
 
 <template>
@@ -13,12 +18,17 @@ const props = defineProps<{
     :style="{ backgroundColor: props.color }"
   >
     <span class="mb-2 inline-block text-sm text-neutral-600">{{
-      new Date(props.createdAt).toLocaleDateString('pt-BR', {
+      props.createdAt.toLocaleDateString('pt-BR', {
         day: '2-digit',
         month: 'short',
         year: 'numeric',
       })
     }}</span>
     <p>{{ props.content }}</p>
+
+    <div class="mt-10 flex gap-4">
+      <button @click="emits('edit', props.id)">Editar</button>
+      <button @click="emits('remove', props.id)">Remover</button>
+    </div>
   </article>
 </template>

@@ -7,9 +7,17 @@ import NotesList from '@/components/Notes/List.vue'
 import NotesCard from '@/components/Notes/Card.vue'
 import NotesEmpty from '@/components/Notes/Empty.vue'
 import { useNotesStore } from '@/stores/notes'
-import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
-const { notes } = storeToRefs(useNotesStore())
+const notesStore = useNotesStore()
+onMounted(() => notesStore.getNotes())
+
+const router = useRouter()
+
+const handleEditNote = (id: string) => router.push('/edit')
+
+const handleRemoveNote = (id: string) => notesStore.remove(id)
 </script>
 
 <template>
@@ -29,14 +37,16 @@ const { notes } = storeToRefs(useNotesStore())
     </section>
 
     <section>
-      <NotesList v-if="notes.length > 0">
+      <NotesList v-if="notesStore.notes.length > 0">
         <NotesCard
-          v-for="note in notes"
+          v-for="note in notesStore.notes"
           :key="note.id"
           :id="note.id"
           :color="note.color"
           :content="note.content"
-          :createdAt="note.createdAt"
+          :createdAt="new Date(note.createdAt)"
+          @edit="handleEditNote"
+          @remove="handleRemoveNote"
         />
       </NotesList>
       <NotesEmpty v-else />

@@ -1,5 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import BaseContainer from '@/components/Base/Container.vue'
+</script>
 
 <template>
-  <div>Home!</div>
+  <BaseContainer>
+    <h1>Home</h1>
+  </BaseContainer>
 </template>

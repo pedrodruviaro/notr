@@ -2,6 +2,7 @@
 import LayoutPage from '@/layouts/Page.vue'
 import BaseTitle from '@/components/Base/Title.vue'
 import BaseButton from '@/components/Base/Button.vue'
+import BaseConfirmDialog from '@/components/Base/ConfirmDialog.vue'
 import NotesList from '@/components/Notes/List.vue'
 import NotesCard from '@/components/Notes/Card.vue'
 import NotesEmpty from '@/components/Notes/Empty.vue'
@@ -9,6 +10,7 @@ import { useRouter } from 'vue-router'
 import { useNotesStore } from '@/stores/notes'
 import { useCategoriesStore } from '@/stores/categories'
 import { computed, ref } from 'vue'
+import type { Note } from '@/types/entities'
 
 const router = useRouter()
 
@@ -16,7 +18,22 @@ const router = useRouter()
 const notesStore = useNotesStore()
 
 const handleEditNote = (id: string) => router.push(`/edit/${id}`)
-const handleRemoveNote = (id: string) => notesStore.remove(id)
+
+const isDialogOpen = ref(false)
+const noteToRemove = ref<Note>()
+
+const handleAskToRemove = (note: Note) => {
+  noteToRemove.value = note
+  isDialogOpen.value = true
+}
+
+const handleConfirmRemove = () => {
+  if (!noteToRemove.value) return
+
+  notesStore.remove(noteToRemove.value.id)
+  isDialogOpen.value = false
+  noteToRemove.value = undefined
+}
 
 // Categories
 const categoriesStore = useCategoriesStore()
@@ -37,7 +54,7 @@ const filteredNotes = computed(() => {
         <BaseButton label="Nova nota" link to="/create" />
       </div>
 
-      <div class="mt-8 flex gap-2">
+      <div class="mt-8 flex flex-wrap gap-2">
         <BaseButton
           label="todas"
           :variant="seletecFilter === undefined ? 'solid' : 'outline'"
@@ -64,10 +81,17 @@ const filteredNotes = computed(() => {
           :createdAt="new Date(note.createdAt)"
           :category="note.category"
           @edit="handleEditNote"
-          @remove="handleRemoveNote"
+          @remove="handleAskToRemove(note)"
         />
       </NotesList>
       <NotesEmpty v-else />
     </section>
+
+    <BaseConfirmDialog
+      v-model="isDialogOpen"
+      :loading="false"
+      label="Deseja realmente apagar essa nota?"
+      @confirm="handleConfirmRemove"
+    />
   </LayoutPage>
 </template>

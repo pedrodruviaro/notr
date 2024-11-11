@@ -29,9 +29,9 @@ const emits = defineEmits<{
     }}</span>
     <p>{{ props.content }}</p>
 
-    <div class="mt-10 flex gap-4">
-      <button @click="emits('edit', props.id)">Editar</button>
-      <button @click="emits('remove', props.id)">Remover</button>
+    <div class="mt-10 flex justify-end gap-4">
+      <button @click="emits('edit', props.id)" class="text-sm text-neutral-800">Editar</button>
+      <button @click="emits('remove', props.id)" class="text-sm text-neutral-800">Remover</button>
     </div>
   </article>
 </template>

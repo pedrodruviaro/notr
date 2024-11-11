@@ -6,14 +6,16 @@ import { noteColors } from '@/types/types'
 import { ref } from 'vue'
 import { useNotesStore } from '@/stores/notes'
 import { useRouter } from 'vue-router'
+import { useCategoriesStore } from '@/stores/categories'
+import { storeToRefs } from 'pinia'
+
+const { categories } = storeToRefs(useCategoriesStore())
 
 const selectedColor = ref<(typeof noteColors)[number]>(noteColors[0])
 const content = ref('')
-const category = ref()
+const category = ref('')
 
 const notesStore = useNotesStore()
-
-const CAT = ['work', 'life', 'fitness']
 
 const router = useRouter()
 
@@ -32,10 +34,13 @@ const handleCreateNote = () => {
     <section class="space-y-8">
       <BaseTitle label="Crie sua nota" />
 
-      <div>
-        <select class="border p-2" v-model="category">
+      <div class="grid max-w-max">
+        <span class="mb-1 inline-block">Categoria</span>
+        <select class="rounded-lg border border-zinc-900 px-4 py-2.5" v-model="category">
           <option value="">Nenhuma</option>
-          <option v-for="c in CAT" :key="c" :value="c">{{ c }}</option>
+          <option v-for="category in categories" :key="category.id" :value="category.title">
+            {{ category.title }}
+          </option>
         </select>
       </div>
 

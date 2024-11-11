@@ -6,9 +6,18 @@ import Logo from '@/components/Logo.vue'
 <template>
   <header class="border-b border-neutral-200 py-4">
     <BaseContainer>
-      <RouterLink to="/" class="block max-w-max">
-        <Logo />
-      </RouterLink>
+      <nav class="flex flex-wrap items-center justify-between gap-2">
+        <RouterLink to="/" class="block max-w-max">
+          <Logo />
+        </RouterLink>
+
+        <div class="flex gap-4">
+          <RouterLink class="font-semibold hover:opacity-80 md:text-lg" to="/">Notas</RouterLink>
+          <RouterLink class="font-semibold hover:opacity-80 md:text-lg" to="/categories"
+            >Categorias</RouterLink
+          >
+        </div>
+      </nav>
     </BaseContainer>
   </header>
 </template>

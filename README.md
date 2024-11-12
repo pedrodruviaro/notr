@@ -1,39 +1,42 @@
-# notr
+# Not.r
 
-This template should help get you started developing with Vue 3 in Vite.
+- https://notr.pedroruviaro.com.br/
 
-## Recommended IDE Setup
+Um simples app de notas usando Vue, LocalStorage e Pinia para gerenciamento de estado. Simples, direto e intuitivo :)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Descrição
 
-## Type Support for `.vue` Imports in TS
+O principal objetivo foi o aprimoramento de conhecimentos com Vue, TypeScript e Pinia como gerenciador de estado.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Telas da aplicação
 
-## Customize configuration
+### Notas
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+![notas](https://utfs.io/f/GMvi6tcKj6u33y9KXw0NEWXt5olpjQnJaB4I7GKxVdAuc1F9)
 
-## Project Setup
+### Categorias
 
-```sh
-yarn
-```
+![categorias](https://utfs.io/f/GMvi6tcKj6u3K4CdxmEhmVfT2r8vBoN1YDlpMcsL7wy0WIjR)
 
-### Compile and Hot-Reload for Development
+### Criação / Edição
 
-```sh
-yarn dev
-```
+![tela de criação](https://utfs.io/f/GMvi6tcKj6u3WYosAZamF7GLxRbNMZkdVTKsSHgc8rinY1Pq)
 
-### Type-Check, Compile and Minify for Production
+### Dependências
 
-```sh
-yarn build
-```
+- Yarn 1.22
+- Node v20+
 
-### Lint with [ESLint](https://eslint.org/)
+### Instalação
 
-```sh
-yarn lint
-```
+- git clone
+- yarn i
+- yarn dev
+
+## Autores
+
+- [Pedro Ruviaro](https://pedroruviaro.com.br/)
+
+## Licença
+
+Esse projeto é licenciado sobre MIT.

@@ -53,10 +53,13 @@ export const useCategoriesStore = defineStore('categories', () => {
   const edit = (id: string, { title }: Pick<Category, 'title'>) => {
     const idx = categories.value.findIndex((c) => c.id === id)
 
-    const localId = categories.value[idx].id
-    categories.value.splice(idx, 1, { id: localId, title })
+    const localCategory = categories.value[idx]
+
+    categories.value.splice(idx, 1, { id: localCategory.id, title })
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...categories.value]))
+
+    notesStore.editCategory(localCategory.title, title)
 
     toast.success('Categoria atualizada!', { duration: 2000, position: 'top-right' })
   }

@@ -91,6 +91,16 @@ export const useNotesStore = defineStore('notes', () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...notes.value]))
   }
 
+  const editCategory = (oldValue: string, newValue: string) => {
+    notes.value.forEach((note) => {
+      if (note.category && note.category === oldValue) {
+        note.category = newValue
+      }
+    })
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([...notes.value]))
+  }
+
   return {
     notes,
     create,
@@ -99,6 +109,7 @@ export const useNotesStore = defineStore('notes', () => {
     editNote,
     getNoteById,
     removeCategory,
+    editCategory,
   }
 })
 

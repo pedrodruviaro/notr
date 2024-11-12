@@ -12,7 +12,7 @@ const currentYear = computed(() => {
   <footer class="bg-neutral-100 py-6">
     <BaseContainer>
       <div
-        class="flex flex-wrap items-center justify-between gap-6 text-center text-sm text-neutral-700"
+        class="flex flex-col justify-center gap-6 text-center text-sm text-neutral-700 md:flex-row md:items-center md:justify-around"
       >
         <p>
           &copy; Copyright {{ currentYear }} -
@@ -25,7 +25,7 @@ const currentYear = computed(() => {
           >
         </p>
 
-        <p class="flex items-end gap-1">
+        <p class="flex justify-center gap-1">
           Veja o código no
           <a
             class="flex items-center gap-1 border-b border-neutral-400 hover:opacity-80"

@@ -48,7 +48,9 @@ const seletecFilter = ref<undefined | string>(undefined)
 // Both
 const filteredNotes = computed(() => {
   if (!seletecFilter.value) return notesStore.notes
-  return notesStore.notes.filter((n) => n.category?.toLowerCase() === seletecFilter.value)
+  return notesStore.notes.filter(
+    (n) => n.category?.toLowerCase() === seletecFilter.value?.toLowerCase(),
+  )
 })
 </script>
 

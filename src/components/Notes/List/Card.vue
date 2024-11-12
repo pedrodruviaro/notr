@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
+
 const props = defineProps<{
   id: string
   color: string
@@ -10,22 +12,28 @@ const props = defineProps<{
 const emits = defineEmits<{
   edit: [id: string]
   remove: [id: string]
+  detail: [id: string]
 }>()
 </script>
 
 <template>
-  <RouterLink
-    :to="`/notes/${props.id}`"
-    class="block overflow-hidden rounded-lg border border-neutral-900 p-4 lg:p-6"
+  <article
+    class="overflow-hidden rounded-lg border border-neutral-900 p-4 lg:p-6"
     :style="{ backgroundColor: props.color }"
   >
-    <span class="mb-2 inline-block text-sm text-neutral-600">{{
-      props.createdAt.toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: 'short',
-        year: 'numeric',
-      })
-    }}</span>
+    <div class="flex items-center justify-between">
+      <span class="mb-2 inline-block text-sm text-neutral-600">{{
+        props.createdAt.toLocaleDateString('pt-BR', {
+          day: '2-digit',
+          month: 'short',
+          year: 'numeric',
+        })
+      }}</span>
+
+      <button class="p-1 text-neutral-600 hover:opacity-70" @click="emits('detail', props.id)">
+        <Icon icon="mdi:arrow-top-right" class="h-6 w-6" />
+      </button>
+    </div>
 
     <p class="max-w-max truncate">{{ props.content }}</p>
 
@@ -37,5 +45,5 @@ const emits = defineEmits<{
         <button @click="emits('remove', props.id)" class="text-sm text-neutral-800">Remover</button>
       </div>
     </div>
-  </RouterLink>
+  </article>
 </template>

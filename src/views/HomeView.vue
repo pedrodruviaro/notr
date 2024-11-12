@@ -18,6 +18,8 @@ const notesStore = useNotesStore()
 
 const handleEditNote = (id: string) => router.push(`/edit/${id}`)
 
+const handleMoveToDetail = (id: string) => router.push(`/notes/${id}`)
+
 const isDialogOpen = ref(false)
 const noteToRemove = ref<Note>()
 
@@ -81,6 +83,7 @@ const filteredNotes = computed(() => {
           :category="note.category"
           @edit="handleEditNote"
           @remove="handleAskToRemove(note)"
+          @detail="handleMoveToDetail"
         />
       </NotesList>
       <NotesEmpty v-else />

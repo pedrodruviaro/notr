@@ -5,7 +5,12 @@ import SingleEmpty from '@/components/Notes/Single/Empty.vue'
 import { useNotesStore } from '@/stores/notes'
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { useHead } from 'unhead'
 import type { Note } from '@/types/entities'
+
+useHead({
+  title: 'Minha nota - Not.r',
+})
 
 const route = useRoute()
 const noteId = computed(() => route.params.id as string)

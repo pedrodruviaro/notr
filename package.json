@@ -15,6 +15,7 @@
   "dependencies": {
     "@formkit/auto-animate": "^0.8.2",
     "pinia": "^2.2.6",
+    "unhead": "^1.11.11",
     "uuid": "^11.0.3",
     "vue": "^3.5.12",
     "vue-router": "4",

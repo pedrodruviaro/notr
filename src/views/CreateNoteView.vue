@@ -7,6 +7,11 @@ import { useNotesStore } from '@/stores/notes'
 import { useRouter } from 'vue-router'
 import { useCategoriesStore } from '@/stores/categories'
 import { storeToRefs } from 'pinia'
+import { useHead } from 'unhead'
+
+useHead({
+  title: 'Criar - Not.r',
+})
 
 const { categories } = storeToRefs(useCategoriesStore())
 

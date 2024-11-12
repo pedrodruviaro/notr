@@ -9,7 +9,12 @@ import { useRouter } from 'vue-router'
 import { useNotesStore } from '@/stores/notes'
 import { useCategoriesStore } from '@/stores/categories'
 import { computed, ref } from 'vue'
+import { useHead } from 'unhead'
 import type { Note } from '@/types/entities'
+
+useHead({
+  title: 'Home - Not.r',
+})
 
 const router = useRouter()
 

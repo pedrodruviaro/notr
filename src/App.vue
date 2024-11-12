@@ -2,7 +2,10 @@
 import { useNotesStore } from '@/stores/notes'
 import { onMounted } from 'vue'
 import { useCategoriesStore } from './stores/categories'
+import { createHead } from 'unhead'
 import LayoutPage from '@/layouts/Page.vue'
+
+createHead()
 
 const notesStore = useNotesStore()
 const categoriesStore = useCategoriesStore()

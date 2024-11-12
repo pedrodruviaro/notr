@@ -5,7 +5,12 @@ import BaseConfirmDialog from '@/components/Base/ConfirmDialog.vue'
 import { Icon } from '@iconify/vue'
 import { computed, ref } from 'vue'
 import { useCategoriesStore } from '@/stores/categories'
+import { useHead } from 'unhead'
 import type { Category } from '@/types/entities'
+
+useHead({
+  title: 'Categorias - Not.r',
+})
 
 const categoriesStore = useCategoriesStore()
 

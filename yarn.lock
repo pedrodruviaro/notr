@@ -771,6 +771,29 @@
     "@typescript-eslint/types" "8.13.0"
     eslint-visitor-keys "^3.4.3"
 
+"@unhead/dom@1.11.11":
+  version "1.11.11"
+  resolved "https://registry.yarnpkg.com/@unhead/dom/-/dom-1.11.11.tgz#74569a280d7b9f013813aef8dee4705cb011e58a"
+  integrity sha512-4YwziCH5CmjvUzSGdZ4Klj6BqhLSTNZooA9kt47yDxj4Qw9uHqVnXwWWupYsVdIYPNsw1tR2AkHveg82y1Fn3A==
+  dependencies:
+    "@unhead/schema" "1.11.11"
+    "@unhead/shared" "1.11.11"
+
+"@unhead/schema@1.11.11":
+  version "1.11.11"
+  resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.11.11.tgz#28c5dbe923fce0948badca998934c322f5a1c096"
+  integrity sha512-xSGsWHPBYcMV/ckQeImbrVu6ddeRnrdDCgXUKv3xIjGBY+ob/96V80lGX8FKWh8GwdFSwhblISObKlDAt5K9ZQ==
+  dependencies:
+    hookable "^5.5.3"
+    zhead "^2.2.4"
+
+"@unhead/shared@1.11.11":
+  version "1.11.11"
+  resolved "https://registry.yarnpkg.com/@unhead/shared/-/shared-1.11.11.tgz#1ec0ec744edce31808256801ce13efd369fa6d62"
+  integrity sha512-RfdvUskPn90ipO+PmR98jKZ8Lsx1uuzscOenO5xcrMrtWGhlLWaEBIrbvFOvX5PZ/u8/VNMJChTXGDUjEtHmlg==
+  dependencies:
+    "@unhead/schema" "1.11.11"
+
 "@vitejs/plugin-vue@^5.1.4":
   version "5.1.5"
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-5.1.5.tgz#ef1d7e19f8cecb0d1301c987dc0bdf8b778e3c82"
@@ -2640,6 +2663,16 @@ undici-types@~6.19.8:
   resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-6.19.8.tgz#35111c9d1437ab83a7cdc0abae2f26d88eda0a02"
   integrity sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==
 
+unhead@^1.11.11:
+  version "1.11.11"
+  resolved "https://registry.yarnpkg.com/unhead/-/unhead-1.11.11.tgz#5115d42ccb4c76fa6053b5b83831a1e14de901a1"
+  integrity sha512-98tM2R8OWJhvS6uqTewkfIrsPqFU/VwnKpU2tVZ+jPXSWgWSLmM3K2Y2v5AEM4bZjmC/XH8pLVGzbqB7xzFI/Q==
+  dependencies:
+    "@unhead/dom" "1.11.11"
+    "@unhead/schema" "1.11.11"
+    "@unhead/shared" "1.11.11"
+    hookable "^5.5.3"
+
 universalify@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.1.tgz#168efc2180964e6386d061e094df61afe239b18d"
@@ -2840,6 +2873,11 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zhead@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/zhead/-/zhead-2.2.4.tgz#87cd1e2c3d2f465fa9f43b8db23f9716dfe6bed7"
+  integrity sha512-8F0OI5dpWIA5IGG5NHUg9staDwz/ZPxZtvGVf01j7vHqSyZ0raHY+78atOVxRqb73AotX22uV1pXt3gYSstGag==
 
 zod@^3.23.8:
   version "3.23.8"

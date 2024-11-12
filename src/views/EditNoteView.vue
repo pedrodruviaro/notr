@@ -4,7 +4,12 @@ import BaseButton from '@/components/Base/Button.vue'
 import { noteColors } from '@/types/types'
 import { computed, onMounted, ref } from 'vue'
 import { useNotesStore } from '@/stores/notes'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
+import { useHead } from 'unhead'
+
+useHead({
+  title: 'Editar - Not.r',
+})
 
 const route = useRoute()
 const notedId = computed(() => route.params.id as string)

@@ -7,6 +7,13 @@ import { computed, ref } from 'vue'
 import { useCategoriesStore } from '@/stores/categories'
 import { useHead } from 'unhead'
 import type { Category } from '@/types/entities'
+import { z, type ZodFormattedError } from 'zod'
+
+const schema = z.object({
+  category: z.string().min(2, 'Pelo menos 2 caracteres são ncessários'),
+})
+
+const errors = ref<ZodFormattedError<{ category: string }>>()
 
 useHead({
   title: 'Categorias - Not.r',
@@ -26,11 +33,21 @@ const handleSetEdit = (cat: Category) => {
 const handleCancelEdit = () => {
   categoryToEdit.value = undefined
   category.value = ''
+  errors.value = undefined
 }
 
 const isEditing = computed(() => categoryToEdit.value)
 
 const handleSubmit = () => {
+  const result = schema.safeParse({ category: category.value })
+
+  if (!result.success) {
+    errors.value = result.error.format()
+    return
+  }
+
+  errors.value = undefined
+
   if (isEditing.value) {
     if (!categoryToEdit.value) return
 
@@ -84,6 +101,10 @@ const handleConfirmRemove = () => {
           />
           <BaseButton type="submit" :label="isEditing ? 'Editar' : 'Salvar'" />
         </form>
+
+        <span class="text-red-400" v-if="errors?.category?._errors">{{
+          errors?.category?._errors[0]
+        }}</span>
       </section>
 
       <section>

@@ -9,3 +9,9 @@ export const noteColors = [
   '#a9c9d4',
   '#fbf2ed',
 ] as const
+
+export type NoteFormData = {
+  category: string
+  color: (typeof noteColors)[number]
+  content: string
+}

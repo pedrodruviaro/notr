@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { useNotesStore } from './notes'
 import { useToast } from 'vue-toast-notification'
 import type { Category } from '@/types/entities'
+import { MOCK_CATEGORIES } from '@/data/mocks'
 
 const STORAGE_KEY = 'categories-notr'
 
@@ -64,12 +65,28 @@ export const useCategoriesStore = defineStore('categories', () => {
     toast.success('Categoria atualizada!', { duration: 2000, position: 'top-right' })
   }
 
+  const mockData = () => {
+    const hasCategories = localStorage.getItem(STORAGE_KEY)
+    if (hasCategories) {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify([...JSON.parse(hasCategories), ...MOCK_CATEGORIES]),
+      )
+
+      categories.value = [...categories.value, ...MOCK_CATEGORIES]
+    } else {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([...MOCK_CATEGORIES]))
+      categories.value = [...MOCK_CATEGORIES]
+    }
+  }
+
   return {
     categories,
     getCategories,
     create,
     remove,
     edit,
+    mockData,
   }
 })
 

@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { ref } from 'vue'
 import { useToast } from 'vue-toast-notification'
 import type { Note } from '@/types/entities'
+import { MOCK_NOTES } from '@/data/mocks'
 
 const STORAGE_KEY = 'notes-notr'
 
@@ -101,6 +102,17 @@ export const useNotesStore = defineStore('notes', () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...notes.value]))
   }
 
+  const mockData = () => {
+    const hasNotes = localStorage.getItem(STORAGE_KEY)
+    if (hasNotes) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([...JSON.parse(hasNotes), ...MOCK_NOTES]))
+      notes.value = [...notes.value, ...MOCK_NOTES]
+    } else {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([...MOCK_NOTES]))
+      notes.value = [...MOCK_NOTES]
+    }
+  }
+
   return {
     notes,
     create,
@@ -110,6 +122,7 @@ export const useNotesStore = defineStore('notes', () => {
     getNoteById,
     removeCategory,
     editCategory,
+    mockData,
   }
 })
 

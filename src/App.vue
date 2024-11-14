@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import LayoutPage from '@/layouts/Page.vue'
+import LayoutBanner from '@/components/Layout/Banner.vue'
 import { useNotesStore } from '@/stores/notes'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useCategoriesStore } from './stores/categories'
 import { createHead } from 'unhead'
-import LayoutPage from '@/layouts/Page.vue'
 
 createHead()
 
@@ -14,10 +15,21 @@ onMounted(() => {
   notesStore.getNotes()
   categoriesStore.getCategories()
 })
+
+const bannerRef = ref<InstanceType<typeof LayoutBanner> | null>(null)
+
+const handleMockData = () => {
+  categoriesStore.mockData()
+  notesStore.mockData()
+
+  bannerRef.value?.handleClose()
+}
 </script>
 
 <template>
   <div class="overflow-x-hidden">
+    <LayoutBanner ref="bannerRef" @action="handleMockData" />
+
     <LayoutPage>
       <RouterView v-slot="{ Component }">
         <Transition name="page-transition" mode="out-in">
